@@ -158,8 +158,8 @@ class ObjectivesFragment : DaggerFragment() {
             val objective = objectivesPlugin.objectives[position]
             holder.binding.title.text = rh.gs(R.string.nth_objective, position + 1)
             if (objective.objective != 0) {
-                holder.binding.objective.visibility = View.VISIBLE
-                holder.binding.objective.text = rh.gs(objective.objective)
+                holder.binding.objective.visibility = View.GONE //View.VISIBLE
+                holder.binding.objective.text = "aaaaaaaaaaaaa" //rh.gs(objective.objective)
             } else
                 holder.binding.objective.visibility = View.GONE
             if (objective.gate != 0) {
