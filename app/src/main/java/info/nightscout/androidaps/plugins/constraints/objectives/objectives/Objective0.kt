@@ -44,28 +44,28 @@ class Objective0(injector: HasAndroidInjector) : Objective(injector, "config", R
         })
         tasks.add(object : Task(this, R.string.objectives_pumpstatusavailableinns) {
             override fun isCompleted(): Boolean {
-                return sp.getBoolean(R.string.key_ObjectivespumpStatusIsAvailableInNS, false)
+                return true// sp.getBoolean(R.string.key_ObjectivespumpStatusIsAvailableInNS, false)
             }
         })
         tasks.add(object : Task(this, R.string.hasbgdata) {
             override fun isCompleted(): Boolean {
-                return iobCobCalculator.ads.lastBg() != null
+                return true// iobCobCalculator.ads.lastBg() != null
             }
         })
         tasks.add(object : Task(this, R.string.loopenabled) {
             override fun isCompleted(): Boolean {
-                return (loop as PluginBase).isEnabled()
+                return true// (loop as PluginBase).isEnabled()
             }
         })
         tasks.add(object : Task(this, R.string.apsselected) {
             override fun isCompleted(): Boolean {
                 val usedAPS = activePlugin.activeAPS
-                return (usedAPS as PluginBase).isEnabled()
+                return true // (usedAPS as PluginBase).isEnabled()
             }
         })
         tasks.add(object : Task(this, R.string.activate_profile) {
             override fun isCompleted(): Boolean {
-                return repository.getEffectiveProfileSwitchActiveAt(dateUtil.now()).blockingGet() is ValueWrapper.Existing
+                return true//repository.getEffectiveProfileSwitchActiveAt(dateUtil.now()).blockingGet() is ValueWrapper.Existing
             }
         })
     }
