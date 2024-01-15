@@ -127,7 +127,7 @@ abstract class Objective(injector: HasAndroidInjector, spName: String, @StringRe
     inner class ExamTask internal constructor(objective: Objective, @StringRes task: Int, @StringRes val question: Int, private val spIdentifier: String) : Task(objective, task) {
 
         var options = ArrayList<Option>()
-        var answered: Boolean = false
+        var answered: Boolean = true //false
             set(value) {
                 field = value
                 sp.putBoolean("ExamTask_$spIdentifier", value)
@@ -139,13 +139,13 @@ abstract class Objective(injector: HasAndroidInjector, spName: String, @StringRe
             }
 
         init {
-            answered = sp.getBoolean("ExamTask_$spIdentifier", true)
+            answered = true //、 sp.getBoolean("ExamTask_$spIdentifier", true)
             disabledTo = sp.getLong("DisabledTo_$spIdentifier", 0L)
         }
 
         override fun isCompleted(): Boolean = answered
 
-        fun isEnabledAnswer(): Boolean = disabledTo < dateUtil.now()
+        fun isEnabledAnswer(): Boolean = true // disabledTo < dateUtil.now()
 
         fun option(option: Option): ExamTask {
             options.add(option)
