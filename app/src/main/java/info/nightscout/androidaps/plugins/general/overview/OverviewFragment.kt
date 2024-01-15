@@ -605,7 +605,7 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
         val profile = profileFunction.getProfile()
 
         // aps mode
-        val closedLoopEnabled = true //constraintChecker.isClosedLoopAllowed()
+        val closedLoopEnabled = constraintChecker.isClosedLoopAllowed()
 
         fun apsModeSetA11yLabel(stringRes: Int) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
