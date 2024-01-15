@@ -17,8 +17,9 @@ class ConstraintChecker @Inject constructor(private val activePlugin: ActivePlug
     fun isLoopInvocationAllowed(): Constraint<Boolean> =
         isLoopInvocationAllowed(Constraint(true))
 
-    fun isClosedLoopAllowed(): Constraint<Boolean> =
-        isClosedLoopAllowed(Constraint(true))
+    fun isClosedLoopAllowed(): Constraint<Boolean> = Constraint(true)
+        //isClosedLoopAllowed(Constraint(true))
+
 
     fun isLgsAllowed(): Constraint<Boolean> =
         isLgsAllowed(Constraint(true))
