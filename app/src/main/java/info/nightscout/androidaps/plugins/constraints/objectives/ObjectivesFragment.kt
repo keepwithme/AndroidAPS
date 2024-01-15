@@ -157,9 +157,10 @@ class ObjectivesFragment : DaggerFragment() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val objective = objectivesPlugin.objectives[position]
             holder.binding.title.text = rh.gs(R.string.nth_objective, position + 1)
+
             if (objective.objective != 0) {
-                holder.binding.objective.visibility = View.GONE //View.VISIBLE
-                holder.binding.objective.text = "aaaaaaaaaaaaa" //rh.gs(objective.objective)
+                holder.binding.objective.visibility =  View.VISIBLE
+                holder.binding.objective.text =  rh.gs(objective.objective)
             } else
                 holder.binding.objective.visibility = View.GONE
             if (objective.gate != 0) {
@@ -167,18 +168,19 @@ class ObjectivesFragment : DaggerFragment() {
                 holder.binding.gate.text = rh.gs(objective.gate)
             } else
                 holder.binding.gate.visibility = View.GONE
-            if (!objective.isStarted) {
-                holder.binding.gate.setTextColor(rh.gac(context, R.attr.defaultTextColor))
-                holder.binding.verify.visibility = View.GONE
-                holder.binding.progress.visibility = View.GONE
-                holder.binding.accomplished.visibility = View.GONE
-                holder.binding.unfinish.visibility = View.GONE
-                holder.binding.unstart.visibility = View.GONE
-                if (position == 0 || objectivesPlugin.allPriorAccomplished(position))
-                    holder.binding.start.visibility = View.VISIBLE
-                else
-                    holder.binding.start.visibility = View.GONE
-            } else if (objective.isAccomplished) {
+            // if (!objective.isStarted) {
+            //     holder.binding.gate.setTextColor(rh.gac(context, R.attr.defaultTextColor))
+            //     holder.binding.verify.visibility = View.GONE
+            //     holder.binding.progress.visibility = View.GONE
+            //     holder.binding.accomplished.visibility = View.GONE
+            //     holder.binding.unfinish.visibility = View.GONE
+            //     holder.binding.unstart.visibility = View.GONE
+            //     if (position == 0 || objectivesPlugin.allPriorAccomplished(position))
+            //         holder.binding.start.visibility = View.VISIBLE
+            //     else
+            //         holder.binding.start.visibility = View.GONE
+            // } else
+                if (objective.isAccomplished) {
                 holder.binding.gate.setTextColor(rh.gac(context, R.attr.isAccomplishedColor))
                 holder.binding.verify.visibility = View.GONE
                 holder.binding.progress.visibility = View.GONE
@@ -186,7 +188,8 @@ class ObjectivesFragment : DaggerFragment() {
                 holder.binding.accomplished.visibility = View.VISIBLE
                 holder.binding.unfinish.visibility = View.VISIBLE
                 holder.binding.unstart.visibility = View.GONE
-            } else if (objective.isStarted) {
+            } else //if (objective.isStarted)
+            {
                 holder.binding.gate.setTextColor(rh.gac(context,R.attr.defaultTextColor))
                 holder.binding.verify.visibility = View.VISIBLE
                 holder.binding.verify.isEnabled = objective.isCompleted || binding.fake.isChecked
