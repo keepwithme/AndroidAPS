@@ -68,10 +68,10 @@ class MyPreferenceFragment : PreferenceFragmentCompat(), OnSharedPreferenceChang
 
     @Inject lateinit var automationPlugin: AutomationPlugin
     @Inject lateinit var autotunePlugin: AutotunePlugin
-    // @Inject lateinit var danaRPlugin: DanaRPlugin
-    // @Inject lateinit var danaRKoreanPlugin: DanaRKoreanPlugin
-    // @Inject lateinit var danaRv2Plugin: DanaRv2Plugin
-    // @Inject lateinit var danaRSPlugin: DanaRSPlugin
+    @Inject lateinit var danaRPlugin: DanaRPlugin
+    @Inject lateinit var danaRKoreanPlugin: DanaRKoreanPlugin
+    @Inject lateinit var danaRv2Plugin: DanaRv2Plugin
+    @Inject lateinit var danaRSPlugin: DanaRSPlugin
     @Inject lateinit var comboPlugin: ComboPlugin
     @Inject lateinit var insulinOrefFreePeakPlugin: InsulinOrefFreePeakPlugin
     @Inject lateinit var loopPlugin: LoopPlugin
@@ -177,10 +177,10 @@ class MyPreferenceFragment : PreferenceFragmentCompat(), OnSharedPreferenceChang
             addPreferencesFromResourceIfEnabled(sensitivityAAPSPlugin, rootKey)
             addPreferencesFromResourceIfEnabled(sensitivityWeightedAveragePlugin, rootKey)
             addPreferencesFromResourceIfEnabled(sensitivityOref1Plugin, rootKey)
-            // addPreferencesFromResourceIfEnabled(danaRPlugin, rootKey, config.PUMPDRIVERS)
-            // addPreferencesFromResourceIfEnabled(danaRKoreanPlugin, rootKey, config.PUMPDRIVERS)
-            // addPreferencesFromResourceIfEnabled(danaRv2Plugin, rootKey, config.PUMPDRIVERS)
-            // addPreferencesFromResourceIfEnabled(danaRSPlugin, rootKey, config.PUMPDRIVERS)
+            addPreferencesFromResourceIfEnabled(danaRPlugin, rootKey, config.PUMPDRIVERS)
+            addPreferencesFromResourceIfEnabled(danaRKoreanPlugin, rootKey, config.PUMPDRIVERS)
+            addPreferencesFromResourceIfEnabled(danaRv2Plugin, rootKey, config.PUMPDRIVERS)
+            addPreferencesFromResourceIfEnabled(danaRSPlugin, rootKey, config.PUMPDRIVERS)
             addPreferencesFromResourceIfEnabled(localInsightPlugin, rootKey, config.PUMPDRIVERS)
             addPreferencesFromResourceIfEnabled(comboPlugin, rootKey, config.PUMPDRIVERS)
             addPreferencesFromResourceIfEnabled(medtronicPumpPlugin, rootKey, config.PUMPDRIVERS)
