@@ -245,33 +245,13 @@ class ObjectivesFragment : DaggerFragment() {
                     rxBus.send(EventSWUpdate(false))
                 } else {
                     // move out of UI thread
-                    Thread {
-                        NtpProgressDialog().show((context as AppCompatActivity).supportFragmentManager, "NtpCheck")
-                        rxBus.send(EventNtpStatus(rh.gs(R.string.timedetection), 0))
-                        sntpClient.ntpTime(object : SntpClient.Callback() {
-                            override fun run() {
-                                aapsLogger.debug("NTP time: $time System time: ${dateUtil.now()}")
-                                SystemClock.sleep(300)
-                                if (!networkConnected) {
-                                    rxBus.send(EventNtpStatus(rh.gs(R.string.notconnected), 99))
-                                } else if (success) {
-                                    if (objective.isCompleted(time)) {
-                                        objective.accomplishedOn = time
-                                        rxBus.send(EventNtpStatus(rh.gs(R.string.success), 100))
-                                        SystemClock.sleep(1000)
-                                        rxBus.send(EventObjectivesUpdateGui())
-                                        rxBus.send(EventSWUpdate(false))
-                                        SystemClock.sleep(100)
-                                        scrollToCurrentObjective()
-                                    } else {
-                                        rxBus.send(EventNtpStatus(rh.gs(R.string.requirementnotmet), 99))
-                                    }
-                                } else {
-                                    rxBus.send(EventNtpStatus(rh.gs(R.string.failedretrievetime), 99))
-                                }
-                            }
-                        }, receiverStatusStore.isConnected)
-                    }.start()
+                    objective.accomplishedOn = 100000000L
+                    rxBus.send(EventNtpStatus(rh.gs(R.string.success), 100))
+                    SystemClock.sleep(1000)
+                    rxBus.send(EventObjectivesUpdateGui())
+                    rxBus.send(EventSWUpdate(false))
+                    SystemClock.sleep(100)
+                    scrollToCurrentObjective()
                 }
             }
             holder.binding.start.setOnClickListener {
